@@ -2,12 +2,22 @@ package tacocloud.tacocloudapplication;
 
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.List;
 
 @Data
 public class Taco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private Date createdAt;
+
     @NotNull
     @Size(min=5, message="Name must be at least 5 characters long")
     private String name;
